@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>{{.RedisLabel}}</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>{{.RedisServer}}</string>
+		<string>--bind</string>
+		<string>{{.RedisHost}}</string>
+		<string>--port</string>
+		<string>{{.RedisPort}}</string>
+		{{if .RedisPassword}}<string>--requirepass</string>
+		<string>{{.RedisPassword}}</string>
+		{{end}}<string>--dir</string>
+		<string>{{.RedisDir}}</string>
+		<string>--appendonly</string>
+		<string>yes</string>
+		<string>--appendfsync</string>
+		<string>everysec</string>
+		<string>--maxmemory-policy</string>
+		<string>noeviction</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>KeepAlive</key>
+	<true/>
+	<key>StandardOutPath</key>
+	<string>{{.LogDir}}/redis.log</string>
+	<key>StandardErrorPath</key>
+	<string>{{.LogDir}}/redis.log</string>
+</dict>
+</plist>

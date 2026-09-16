@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    @apply border-border;
+  }
+}
+
+@keyframes jobs-preview-bump {
+  0%, 100% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-3px) scale(1.025); }
+  70% { transform: translateY(1px) scale(1); }
+}
+
+.jobs-preview-bump {
+  animation: jobs-preview-bump 350ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jobs-preview-bump { animation: none; }
+}
+
+@layer base {
+  a:focus-visible, summary:focus-visible, input[type="radio"]:focus-visible, input[type="checkbox"]:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+  [hidden] { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin { animation: none; }
+}
+@media (forced-colors: active) {
+  :focus-visible { outline: 2px solid Highlight !important; outline-offset: 2px; }
+}

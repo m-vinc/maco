@@ -1,0 +1,45 @@
+version: "2"
+
+run:
+  timeout: 5m
+
+linters:
+  default: none
+  enable:
+    - errcheck
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+    - misspell
+    - unconvert
+    - nolintlint
+  settings:
+    errcheck:
+      exclude-functions:
+        - os.Remove
+        - os.MkdirAll
+        - fmt.Fprint
+        - fmt.Fprintf
+        - fmt.Fprintln
+        - io.WriteString
+        - (io.Closer).Close
+        - (*os.File).Close
+        - (net.Conn).Close
+    staticcheck:
+      checks:
+        - all
+        - -ST1000
+        - -ST1003
+        - -QF1008
+  exclusions:
+    generated: lax
+    rules:
+      - path: _test\.go
+        linters:
+          - errcheck
+      - path: tests/
+        linters:
+          - errcheck
+    paths:
+      - web/

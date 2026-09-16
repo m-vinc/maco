@@ -1,0 +1,15 @@
+/maco
+/maco-net-helper
+/pkg/nethelper/assets/maco-net-helper
+/build/
+/maco-*.pkg
+/pkg/api/dist/
+/web/node_modules/
+/web/dist/
+*.db
+*.db-wal
+*.db-shm
+/tools/l2-validation/
+/tests/api/
+/docs/internal/wip/
+.DS_Store
